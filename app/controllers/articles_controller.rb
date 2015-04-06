@@ -9,6 +9,11 @@ class ArticlesController < ApplicationController
           @article = Article.find(params[:id])
         end
 
+        def count
+          num_of_articles = Article.all.count
+          render :json => { count: num_of_articles }
+        end
+
         def update
           @article = Article.find(params[:id])
 
