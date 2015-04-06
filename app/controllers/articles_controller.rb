@@ -8,16 +8,22 @@ class ArticlesController < ApplicationController
 	end
 
 	def new
+          @article = Article.new
 	end
 
 	def create
 		@article = Article.new(article_params)
 		#initialize new model with filtered parameter.
-		@article.save
+		#@article.save
 		#store the model to DB
 		#Returns success or failure as a boolean value
-		redirect_to @article
+		#redirect_to @article
 		#redirect automatically to 'show' action, defined later.
+                if @article.save
+                  redirect_to @article
+                else
+                  render 'new'
+                end
 	end
 
 	private
